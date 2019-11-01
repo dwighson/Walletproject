@@ -14,7 +14,7 @@
       }
     ],
     "start_url": "/loyaltycard",
-    "background_color": "#000000",
+    "background_color": "#ffffff",
     "display": "standalone",
     "scope": "/loyaltycard",
     "theme_color": "#ffffff"
