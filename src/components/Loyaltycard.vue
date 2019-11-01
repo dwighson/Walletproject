@@ -62,7 +62,8 @@ export default {
           opacity: o,
           // transform; 'translateX(50%)',
           // left: '50%' - $(this).width + 'px' ,
-          width: w
+          width: w,
+          "max-width": "400px"
         });
         z--;
         o = o - 0.2;
@@ -88,7 +89,8 @@ export default {
               opacity: 1,
               // position: 'relative',
               // transform: 'none'
-              top: top
+              top: top,
+              "max-width": "400px"
             });
             top = top + 60;
           });
@@ -196,6 +198,10 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
+}
+.stampcard {
+  max-width: 400px;
+  margin: 0 auto;
 }
 .loyalty {
   min-height: 100%;
