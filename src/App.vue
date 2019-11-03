@@ -5,8 +5,17 @@
 </template>
 
 <script>
+import PullToRefresh from "pulltorefreshjs";
 export default {
   name: "App",
+  mounted() {
+    const ptr = PullToRefresh.init({
+      mainElement: "body",
+      onRefresh() {
+        window.location.reload();
+      }
+    });
+  }
 };
 </script>
 
@@ -21,7 +30,9 @@ export default {
   color: #2c3e50;
   /* background: rgb(205, 27, 27); */
 }
-
+.ptr--ptr {
+  box-shadow: none !important;
+}
 body {
   margin: 0;
   padding: 0;

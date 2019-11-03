@@ -75,7 +75,9 @@ export default {
       });
 
       $("body").on("click", "li", function() {
-        let top = $(window).height() - 50;
+        let top = $(window).height() - 150;
+      let w = $(window).width() - 20;
+         
         $("button").css({
           display: "block"
         });
