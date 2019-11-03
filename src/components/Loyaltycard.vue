@@ -62,8 +62,8 @@ export default {
           opacity: o,
           // transform; 'translateX(50%)',
           // left: '50%' - $(this).width + 'px' ,
-          width: w,
-          "max-width": "400px"
+          width: w
+          // "max-width": "400px"
         });
         z--;
         o = o - 0.2;
@@ -85,12 +85,12 @@ export default {
           $("li").each(function() {
             $(this).addClass("open");
             $(this).css({
-              width: "calc(100% - 20px)",
+              width: w,
               opacity: 1,
               // position: 'relative',
               // transform: 'none'
-              top: top,
-              "max-width": "400px"
+              top: top
+              // "max-width": "400px"
             });
             top = top + 60;
           });
@@ -126,14 +126,40 @@ export default {
       });
       $(".cards").slick({
         centerMode: true,
-        // slidesToShow: 3,
-        // slidesToScroll: 6,
+        slidesToShow: 1,
+        slidesToScroll: 1,
         // swipeToSlide: true,
-        infinite: true,
+        // infinite: true,
+        // focusOnSelect: true,
         // speed: 500,
         // fade: true,
-        variableWidth: true
-        // cssEase: 'linear'
+        variableWidth: true,
+        cssEase: 'linear'
+      });
+      $(window).resize(function() {
+        // alert("check");
+        let top = $(window).height() - 90;
+        let z = 99;
+        let o = 1;
+        let w = $(window).width() - 20;
+        $("li").each(function(e) {
+          $(this).css({
+            top: top,
+            "z-index": z,
+            opacity: o,
+            // transform; 'translateX(50%)',
+            // left: '50%' - $(this).width + 'px' ,
+            width: w
+            // "max-width": "400px"
+          });
+          z--;
+          o = o - 0.2;
+          w = w - 20;
+          top = top + 10;
+        });
+        $("li:nth-child(n+4)").css({
+          opacity: 0
+        });
       });
     });
   },
@@ -200,7 +226,7 @@ export default {
   left: 0;
 }
 .stampcard {
-  max-width: 400px;
+  /* max-width: 400px; */
   margin: 0 auto;
 }
 .loyalty {
@@ -291,19 +317,20 @@ body {
 }
 
 .card {
-  transform: translateZ(-100px);
-  min-width: calc(100vw - 30px);
-  max-width: 300px;
+  /* transform: translateZ(-100px); */
+  width: calc(100vw - 30px) !important;
+  max-width: 400px;
   overflow: hidden;
+  /* background: purple; */
   /* max-width: 600px; */
   box-sizing: border-box;
+  transition: all .5s ease;
   height: calc(100vh - 140px);
   /* border-radius: 15px; */
 }
 
 .cards {
   width: calc(100% - 0px);
-  /*   background: green; */
   /*   border-radius: 50px; */
   overflow: hidden;
   margin: 0px auto;
@@ -320,13 +347,18 @@ body {
   /*   min-width: 300px; */
   background: black;
 }
+.slick-slide .card {
+  opacity: 0;
+}
 .slick-current {
   opacity: 1;
   transform: translateZ(0px);
 
   background: #25ceff;
 }
-
+.slick-current .card {
+  opacity: 1;
+}
 button.colapse {
   height: 40px;
   min-width: 150px;
@@ -385,7 +417,7 @@ button.colapse {
   top: 0;
   left: 0;
   /* max-width: 500px; */
-  background: #25ceff;
+  /* background: #25ceff; */
   width: 100%;
   margin: 0 auto;
 
