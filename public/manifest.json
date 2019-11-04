@@ -13,9 +13,9 @@
         "sizes": "512x512"
       }
     ],
-    "start_url": "/loyaltycard",
+    "start_url": "/scanner",
     "background_color": "#ffffff",
     "display": "standalone",
-    "scope": "/loyaltycard",
+    "scope": "/scanner",
     "theme_color": "#ffffff"
   }
