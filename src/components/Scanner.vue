@@ -9,11 +9,7 @@
 export default {
   mounted() {
     function onQRCodeScanned(scannedText) {
-      // var scannedTextMemo = document.getElementById("scannedTextMemo");
-      // if (scannedTextMemo) {
-      //   scannedTextMemo.value = scannedText;
-      // }
-      console.log(scannedText);
+       alert(scannedText)
     }
     function provideVideo() {
       var n = navigator;
@@ -66,7 +62,7 @@ export default {
       //the scanner succesfully scan a QR code
       var jbScanner = new JsQRScanner(onQRCodeScanned);
       //reduce the size of analyzed images to increase performance on mobile devices
-      jbScanner.setSnapImageMaxSize(300);
+      // jbScanner.setSnapImageMaxSize(300);
       var scannerParentElement = document.getElementById("scanner");
       if (scannerParentElement) {
         //append the jbScanner to an existing DOM element
@@ -75,12 +71,30 @@ export default {
     }
     document.querySelector(".startscan").addEventListener("click", function() {
       JsQRScannerReady();
+ 
     });
   }
 };
 </script>
-<style  scoped>
-.startscan {
-  background: blue;
-}
+<style >
+  .container {
+    background: purple;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  .qrPreviewVideo {
+    height: 100vh;
+  }
+  .startscan {
+    height: 50px;
+    width: calc(100% - 20px);
+    border: none;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 20px;
+    background: #25ceff;
+    color: white;
+    left: 10px;
+  }
 </style>
