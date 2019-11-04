@@ -13,9 +13,22 @@ export default {
       // if (scannedTextMemo) {
       //   scannedTextMemo.value = scannedText;
       // }
-      console.log(scannedText)
+      console.log(scannedText);
     }
+    function provideVideo() {
+      var n = navigator;
 
+      if (n.mediaDevices && n.mediaDevices.getUserMedia) {
+        return n.mediaDevices.getUserMedia({
+          video: {
+            facingMode: "environment"
+          },
+          audio: false
+        });
+      }
+
+      return Promise.reject("Your browser does not support getUserMedia");
+    }
     //funtion returning a promise with a video stream
     function provideVideoQQ() {
       return navigator.mediaDevices
@@ -51,7 +64,7 @@ export default {
     function JsQRScannerReady() {
       //create a new scanner passing to it a callback function that will be invoked when
       //the scanner succesfully scan a QR code
-      var jbScanner = new JsQRScanner(onQRCodeScanned, provideVideoQQ);
+      var jbScanner = new JsQRScanner(onQRCodeScanned);
       //reduce the size of analyzed images to increase performance on mobile devices
       jbScanner.setSnapImageMaxSize(300);
       var scannerParentElement = document.getElementById("scanner");
@@ -60,9 +73,9 @@ export default {
         jbScanner.appendTo(scannerParentElement);
       }
     }
-    document.querySelector('.startscan').addEventListener('click', function() {
-      JsQRScannerReady()
-    })
+    document.querySelector(".startscan").addEventListener("click", function() {
+      JsQRScannerReady();
+    });
   }
 };
 </script>
