@@ -9,7 +9,41 @@
 export default {
   mounted() {
     function onQRCodeScanned(scannedText) {
-       alert(scannedText)
+      gun.get("user-" + "dwighson@gmail.com").once(user => {
+        let stamps = user["stamp-poke"];
+        // this.stamps = stamps;
+        setTimeout(() => {
+          console.log(stamps);
+          // if (stamps >= 9) {
+          //   let canvas = document.querySelector("canvas");
+          //   let container = document.querySelector(".loyalty");
+          //   canvas.setAttribute("width", container.offsetWidth);
+          //   canvas.setAttribute("height", container.offsetHeight);
+          //   this.start();
+          //   window.onresize = event => {
+          //     let canvas = document.querySelector("canvas");
+          //     let container = document.querySelector(".loyalty");
+          //     canvas.setAttribute("width", container.offsetWidth);
+          //     canvas.setAttribute("height", container.offsetHeight);
+          //     // this.start();
+          //   };
+          // }
+          if (stamps >= 10) {
+            console.log("reset stamps");
+            // this.stop()
+            gun.get("user-" + "dwighson@gmail.com").put({
+              "stamp-poke": 0
+            });
+          } else {
+            gun.get("user-" + "dwighson@gmail.com").put({
+              "stamp-poke": stamps + 1
+            });
+          }
+        }, 200);
+      });
+      gun.get("user-" + "dwighson@gmail.com").once(user => {
+        // console.log(user);
+      });
     }
     function provideVideo() {
       var n = navigator;
@@ -71,30 +105,29 @@ export default {
     }
     document.querySelector(".startscan").addEventListener("click", function() {
       JsQRScannerReady();
- 
     });
   }
 };
 </script>
 <style >
-  .container {
-    background: purple;
-    width: 100%;
-    min-height: 100vh;
-    overflow: hidden;
-  }
-  .qrPreviewVideo {
-    height: 100vh;
-  }
-  .startscan {
-    height: 50px;
-    width: calc(100% - 20px);
-    border: none;
-    border-radius: 10px;
-    position: absolute;
-    bottom: 20px;
-    background: #25ceff;
-    color: white;
-    left: 10px;
-  }
+.container {
+  background: purple;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+.qrPreviewVideo {
+  height: 100vh;
+}
+.startscan {
+  height: 50px;
+  width: calc(100% - 20px);
+  border: none;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 20px;
+  background: #25ceff;
+  color: white;
+  left: 10px;
+}
 </style>
