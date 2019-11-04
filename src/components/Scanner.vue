@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div id="scanner"></div>
-    <input type="text" id="scannedTextMemo" />
+    <button class="startscan">scan</button>
   </div>
 </template>
 
@@ -9,10 +9,11 @@
 export default {
   mounted() {
     function onQRCodeScanned(scannedText) {
-      var scannedTextMemo = document.getElementById("scannedTextMemo");
-      if (scannedTextMemo) {
-        scannedTextMemo.value = scannedText;
-      }
+      // var scannedTextMemo = document.getElementById("scannedTextMemo");
+      // if (scannedTextMemo) {
+      //   scannedTextMemo.value = scannedText;
+      // }
+      console.log(scannedText)
     }
 
     //funtion returning a promise with a video stream
@@ -59,7 +60,14 @@ export default {
         jbScanner.appendTo(scannerParentElement);
       }
     }
-    JsQRScannerReady()
+    document.querySelector('.startscan').addEventListener('click', function() {
+      JsQRScannerReady()
+    })
   }
 };
 </script>
+<style  scoped>
+.startscan {
+  background: blue;
+}
+</style>
