@@ -9,6 +9,7 @@
 export default {
   mounted() {
     function onQRCodeScanned(scannedText) {
+      alert(scannedText)
       gun.get("user-" + "dwighson@gmail.com").once(user => {
         let stamps = user["stamp-poke"];
         // this.stamps = stamps;
