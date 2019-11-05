@@ -6,46 +6,34 @@
 </template>
 
 <script>
+var gun = window.Gun(["https://dwilo.herokuapp.com/gun"]);
+
 export default {
   mounted() {
     function onQRCodeScanned(scannedText) {
-      alert(scannedText)
-      // gun.get("user-" + "dwighson@gmail.com").once(user => {
-      //   let stamps = user["stamp-poke"];
-      //   // this.stamps = stamps;
-      //   setTimeout(() => {
-      //     // alert(stamps);
-      //     // if (stamps >= 9) {
-      //     //   let canvas = document.querySelector("canvas");
-      //     //   let container = document.querySelector(".loyalty");
-      //     //   canvas.setAttribute("width", container.offsetWidth);
-      //     //   canvas.setAttribute("height", container.offsetHeight);
-      //     //   this.start();
-      //     //   window.onresize = event => {
-      //     //     let canvas = document.querySelector("canvas");
-      //     //     let container = document.querySelector(".loyalty");
-      //     //     canvas.setAttribute("width", container.offsetWidth);
-      //     //     canvas.setAttribute("height", container.offsetHeight);
-      //     //     // this.start();
-      //     //   };
-      //     // }
-      //     if (stamps >= 10) {
-      //       console.log("reset stamps");
-      //       // this.stop()
-      //       gun.get("user-" + "dwighson@gmail.com").put({
-      //         "stamp-poke": 0
-      //       });
-      //     } else {
-      //       gun.get("user-" + "dwighson@gmail.com").put({
-      //         "stamp-poke": stamps + 1
-      //       });
-      //       alert('stamp added!')
-      //     }
-      //   }, 200);
-      // });
-      // gun.get("user-" + "dwighson@gmail.com").once(user => {
-      //   // console.log(user);
-      // });
+      
+      gun.get("user-" + "dwighson@gmail.com").once(user => {
+        let stamps = user["stamp-poke"];
+        // this.stamps = stamps;
+        setTimeout(() => {
+         
+          if (stamps >= 10) {
+            console.log("reset stamps");
+            // this.stop()
+            gun.get("user-" + "dwighson@gmail.com").put({
+              "stamp-poke": 0
+            });
+          } else {
+            gun.get("user-" + "dwighson@gmail.com").put({
+              "stamp-poke": stamps + 1
+            });
+            alert('stamp added!')
+          }
+        }, 200);
+      });
+      gun.get("user-" + "dwighson@gmail.com").once(user => {
+        // console.log(user);
+      });
     }
     function provideVideo() {
       var n = navigator;
