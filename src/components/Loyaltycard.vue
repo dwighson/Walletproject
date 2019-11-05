@@ -172,7 +172,7 @@ export default {
         this.stamps = user["stamp-poke"];
         //   alert(this.stamps);
 
-        if (this.stamps >= 9) {
+        if (this.stamps >= 10) {
           let canvas = document.querySelector("canvas");
           let container = document.querySelector(".loyalty");
           canvas.setAttribute("width", container.offsetWidth);
@@ -187,7 +187,7 @@ export default {
           };
           // this.start();
         }
-        if (this.stamps >= 10) {
+        if (this.stamps >= 11) {
           this.stop();
         }
       });
