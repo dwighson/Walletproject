@@ -11,31 +11,29 @@ var gun = window.Gun(["https://dwilo.herokuapp.com/gun"]);
 export default {
   mounted() {
     function onQRCodeScanned(scannedText) {
-      
-      let q = confirm('do you want to add a stamp?')
-       
-      if(q == true) {
+      let q = confirm("do you want to add a stamp?");
+
+      if (q === true) {
         gun.get("user-" + "dwighson@gmail.com").once(user => {
-        let stamps = user["stamp-poke"];
-        // this.stamps = stamps;
-        setTimeout(() => {
-         
-          if (stamps >= 10) {
-            console.log("reset stamps");
-            // this.stop()
-            gun.get("user-" + "dwighson@gmail.com").put({
-              "stamp-poke": 0
-            });
-          } else {
-            gun.get("user-" + "dwighson@gmail.com").put({
-              "stamp-poke": stamps + 1
-            });
-            alert('stamp added!')
-          }
-        }, 200);
-      });
+          let stamps = user["stamp-poke"];
+          // this.stamps = stamps;
+          setTimeout(() => {
+            if (stamps >= 10) {
+              console.log("reset stamps");
+              // this.stop()
+              gun.get("user-" + "dwighson@gmail.com").put({
+                "stamp-poke": 0
+              });
+            } else {
+              gun.get("user-" + "dwighson@gmail.com").put({
+                "stamp-poke": stamps + 1
+              });
+              alert("stamp added!");
+            }
+          }, 200);
+        });
       }
-     
+       return false;
     }
     function provideVideo() {
       var n = navigator;
