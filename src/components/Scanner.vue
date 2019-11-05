@@ -12,7 +12,10 @@ export default {
   mounted() {
     function onQRCodeScanned(scannedText) {
       
-      gun.get("user-" + "dwighson@gmail.com").once(user => {
+      let q = confirm('do you want to add a stamp?')
+       
+      if(q == true) {
+        gun.get("user-" + "dwighson@gmail.com").once(user => {
         let stamps = user["stamp-poke"];
         // this.stamps = stamps;
         setTimeout(() => {
@@ -31,9 +34,8 @@ export default {
           }
         }, 200);
       });
-      gun.get("user-" + "dwighson@gmail.com").once(user => {
-        // console.log(user);
-      });
+      }
+     
     }
     function provideVideo() {
       var n = navigator;

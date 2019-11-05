@@ -136,7 +136,7 @@ export default {
         // speed: 500,
         // fade: true,
         variableWidth: true,
-        cssEase: 'linear'
+        // cssEase: 'linear'
       });
       $(window).resize(function() {
         // alert("check");
