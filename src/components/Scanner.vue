@@ -13,7 +13,7 @@ export default {
         let stamps = user["stamp-poke"];
         // this.stamps = stamps;
         setTimeout(() => {
-          console.log(stamps);
+          // alert(stamps);
           // if (stamps >= 9) {
           //   let canvas = document.querySelector("canvas");
           //   let container = document.querySelector(".loyalty");
@@ -38,6 +38,7 @@ export default {
             gun.get("user-" + "dwighson@gmail.com").put({
               "stamp-poke": stamps + 1
             });
+            alert('stamp added!')
           }
         }, 200);
       });
@@ -111,7 +112,7 @@ export default {
 </script>
 <style >
 .container {
-  background: purple;
+  /* background: purple; */
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
